@@ -151,7 +151,7 @@ export class Oda {
       /* --- never have i ever --- */
       case 'nhieSeviye': {
         if (!this.host(id)) return;
-        if (['hafif', 'aci', 'hepsi'].includes(m.seviye)) T.nhie.seviye = m.seviye;
+        if (['klasik', 'aci', 'hepsi'].includes(m.seviye)) T.nhie.seviye = m.seviye;
         this.yayinla(); break;
       }
       case 'nhieCevap': {

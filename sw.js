@@ -1,13 +1,13 @@
 /* Muhabbet — çevrimdışı kabuk.
    Sayfanın kendisi ÖNCE AĞDAN alınır; sürümlü dosyalar önbellekten.
    Böylece yeni sürüm çıkınca uygulama kendini güncelleyebilir. */
-const SURUM = 'v1';
+const SURUM = 'v2';
 const ONBELLEK = 'muhabbet-' + SURUM;
 
 const DOSYALAR = [
   './', './index.html', './manifest.webmanifest',
-  './css/style.css?v=1',
-  './js/room.js?v=1', './js/sise.js?v=1', './js/nhie.js?v=1', './js/app.js?v=1',
+  './css/style.css?v=2',
+  './js/room.js?v=2', './js/sise.js?v=2', './js/nhie.js?v=2', './js/app.js?v=2',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
 ];
 

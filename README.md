@@ -10,7 +10,7 @@ Oda kodunu paylaş, katıl, oyna. Kurulum yok, derleme adımı yok, bağımlıl�
 | Oyun | Durum | Nasıl çalışır |
 |---|---|---|
 | **Şişe Çevirmece** | hazır | Şişe herkesin telefonunda aynı anda aynı kişiye döner; seçilene bir görev düşer. |
-| **Ben Hiç…** | hazır | Cümle herkese gider, herkes gizlice cevaplar, son kişi de cevaplayınca hepsi birden açılır. |
+| **Ben Hiç…** | hazır | Cümle herkese gider, herkes gizlice cevaplar, son kişi de cevaplayınca hepsi birden açılır. 200 cümle, iki seviye. |
 | **Tabu** | yakında | Kelimeyi yalnızca anlatan görür; karşı takım yasaklıları görüp ihlali yakalar. |
 | **Bil Bakalım!** | yakında | Cevabı sayı olan bir soru; en yakın tahmini yapan kazanır. |
 | **Apti** | yakında | Kuralları netleşince eklenecek. |
@@ -55,5 +55,13 @@ yoksa tarayıcı eski dosyaları servis etmeye devam eder.
 
 ## İçerik eklemek
 
-`js/deck.js` düz bir liste. Yeni cümle ya da görev eklemek için diziye bir satır
-eklemek yeterli; `seviye` alanı `hafif` ya da `aci` olabilir.
+`js/deck.js` düz bir liste; ekleyip çıkarmak için diziye satır yazmak yeterli.
+
+**Ben Hiç… seviyeleri** (`s` alanı):
+
+- `klasik` (100 cümle) — masada kim olursa olsun rahat sorulur: beceriksizlikler,
+  unutkanlıklar, günlük utanç anları.
+- `aci` (100 cümle) — yakın arkadaş grubu için: ilişkiler, itiraflar, cinsellik,
+  sarhoş kararları ve odadaki insanlara dokunan sorular.
+
+**Şişe görevleri**: 50 adet, `GOREVLER` dizisinde.
