@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="28%" r="88%">
+      <stop offset="0%" stop-color="#5b21b6"/><stop offset="55%" stop-color="#2a1160"/>
+      <stop offset="100%" stop-color="#120b28"/>
+    </radialGradient>
+    <linearGradient id="cam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1f6b42"/><stop offset="45%" stop-color="#6fd39b"/>
+      <stop offset="100%" stop-color="#1f6b42"/>
+    </linearGradient>
+    <filter id="sh" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g transform="translate(256 256) scale(.72) translate(-256 -256)">
+  <circle cx="256" cy="262" r="150" fill="none" stroke="#a78bfa" stroke-width="5" stroke-dasharray="14 12" opacity=".55"/>
+  <g transform="translate(256 262) rotate(38)" filter="url(#sh)">
+    <path d="M-26 -118 h52 v70 c0 17 30 29 30 55 v112 c0 15-22 25-56 25 s-56-10-56-25 V7 c0-26 30-38 30-55 z"
+          fill="url(#cam)" stroke="#0b2a1c" stroke-width="6"/>
+    <rect x="-28" y="-134" width="56" height="26" rx="9" fill="#f59e0b"/>
+    <rect x="-42" y="60" width="84" height="62" rx="9" fill="#f3efff" opacity=".9"/>
+  </g>
+  </g>
+</svg>

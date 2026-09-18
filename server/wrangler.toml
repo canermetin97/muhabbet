@@ -1,0 +1,11 @@
+name = "muhabbet"
+main = "src/index.js"
+compatibility_date = "2025-08-01"
+
+[[durable_objects.bindings]]
+name = "ODA"
+class_name = "Oda"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Oda"]

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Muhabbet — parti oyunları</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a1040">
+<meta name="description" content="Şişe çevirmece, Never Have I Ever ve dahası — oda kodu paylaş, herkes kendi telefonundan oynasın.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Muhabbet">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+<div id="app-root">
+
+<!-- ==================== GİRİŞ ==================== -->
+<section id="ekran-giris" class="ekran aktif">
+  <div class="sarmal">
+    <h1 class="logo">MUHABBET</h1>
+    <p class="slogan">Oda kodunu paylaş, herkes kendi telefonundan oynasın.</p>
+
+    <div class="alan">
+      <label>Adın</label>
+      <input id="ad" type="text" maxlength="14" placeholder="Adın" autocomplete="off">
+    </div>
+
+    <button class="dugme birincil buyuk" id="oda-kur">Yeni Oda Kur</button>
+    <div class="veya"><span>veya</span></div>
+
+    <div class="alan">
+      <label>Oda kodu</label>
+      <input id="kod" type="text" maxlength="8" placeholder="ABCDE"
+             autocomplete="off" autocapitalize="characters" spellcheck="false">
+    </div>
+    <button class="dugme buyuk" id="odaya-katil">Odaya Katıl</button>
+
+    <p class="durum" id="giris-durum"></p>
+    <p class="dipnot"><span data-surum>v.—</span> · En fazla 12 kişi · İçki zorunlu değil, muhabbet şart.</p>
+  </div>
+</section>
+
+<!-- ==================== LOBİ ==================== -->
+<section id="ekran-lobi" class="ekran">
+  <header class="ustbar">
+    <button class="dugme hayalet kucuk" data-cik>‹ Çık</button>
+    <span class="kod-rozet" id="lobi-kod">—</span>
+    <button class="dugme hayalet kucuk" id="kod-kopyala">Kodu kopyala</button>
+  </header>
+
+  <div class="govde">
+    <h2 class="baslik">Odadakiler</h2>
+    <ul class="oyuncu-listesi" id="lobi-oyuncular"></ul>
+
+    <div id="lobi-host">
+      <h2 class="baslik">Oyun seç</h2>
+      <div class="oyun-kartlari">
+        <button class="oyun-karti" data-oyun="sise">
+          <span class="ok-ikon">🍾</span>
+          <b>Şişe Çevirmece</b>
+          <small>Şişe döner, birini seçer, görev verir</small>
+        </button>
+        <button class="oyun-karti" data-oyun="nhie">
+          <span class="ok-ikon">🙊</span>
+          <b>Ben Hiç…</b>
+          <small>Herkes gizlice cevaplar, birlikte açılır</small>
+        </button>
+        <button class="oyun-karti yakinda" disabled>
+          <span class="ok-ikon">🤫</span>
+          <b>Tabu</b><small>yakında</small>
+        </button>
+        <button class="oyun-karti yakinda" disabled>
+          <span class="ok-ikon">🔢</span>
+          <b>Bil Bakalım!</b><small>yakında</small>
+        </button>
+      </div>
+    </div>
+    <p class="bekle" id="lobi-bekle">Odayı kuran kişinin oyun seçmesi bekleniyor…</p>
+  </div>
+</section>
+
+<!-- ==================== ŞİŞE ==================== -->
+<section id="ekran-sise" class="ekran">
+  <header class="ustbar">
+    <button class="dugme hayalet kucuk" data-lobi>‹ Lobi</button>
+    <span class="kod-rozet" id="sise-kod">—</span>
+    <span class="tur-rozet" id="sise-tur"></span>
+  </header>
+
+  <div class="govde orta">
+    <div class="masa" id="sise-masa">
+      <div class="halka" id="sise-halka"></div>
+      <div class="sise" id="sise-obje">
+        <svg viewBox="0 0 40 150" width="40" height="150" aria-hidden="true">
+          <defs><linearGradient id="cam" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#2f7d4f"/><stop offset="45%" stop-color="#6fd39b"/>
+            <stop offset="100%" stop-color="#2f7d4f"/></linearGradient></defs>
+          <path d="M14 8 h12 v34 c0 8 7 14 7 26 v62 c0 7-5 12-13 12 h-0 c-8 0-13-5-13-12 V68 c0-12 7-18 7-26 z"
+                fill="url(#cam)" stroke="#123" stroke-width="1.5"/>
+          <rect x="13" y="2" width="14" height="9" rx="3" fill="#f59e0b"/>
+          <rect x="10" y="92" width="20" height="26" rx="3" fill="#f5f0ff" opacity=".85"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="sonuc" id="sise-sonuc"></div>
+  </div>
+
+  <footer class="altbar">
+    <button class="dugme birincil buyuk" id="sise-cevir">Şişeyi Çevir</button>
+    <button class="dugme buyuk gizli" id="sise-tamam">Tamamdır, sıradaki</button>
+  </footer>
+</section>
+
+<!-- ==================== BEN HİÇ… ==================== -->
+<section id="ekran-nhie" class="ekran">
+  <header class="ustbar">
+    <button class="dugme hayalet kucuk" data-lobi>‹ Lobi</button>
+    <span class="kod-rozet" id="nhie-kod">—</span>
+    <span class="tur-rozet" id="nhie-tur"></span>
+  </header>
+
+  <div class="govde orta">
+    <div class="seviye-secici" id="nhie-seviye">
+      <button class="cip" data-seviye="hafif">Hafif</button>
+      <button class="cip" data-seviye="hepsi">Karışık</button>
+      <button class="cip" data-seviye="aci">Acı biber 🌶</button>
+    </div>
+
+    <div class="cumle-kart" id="nhie-cumle">…</div>
+    <div class="cevap-izgara" id="nhie-izgara"></div>
+  </div>
+
+  <footer class="altbar">
+    <div class="ikili" id="nhie-cevap-dugmeleri">
+      <button class="dugme evet buyuk" id="nhie-yaptim">Yaptım 🙈</button>
+      <button class="dugme hayir buyuk" id="nhie-yapmadim">Yapmadım 😇</button>
+    </div>
+    <button class="dugme birincil buyuk gizli" id="nhie-sonraki">Sıradaki</button>
+    <button class="dugme hayalet kucuk gizli" id="nhie-ac">Beklemeden aç</button>
+  </footer>
+</section>
+
+</div>
+
+<script src="js/room.js?v=1"></script>
+<script src="js/sise.js?v=1"></script>
+<script src="js/nhie.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
