@@ -80,6 +80,7 @@ export class Oda {
     if (acik.length === 0) { this.T = null; return; }        // oda boşaldı → sıfırla
     if (this.T.hostId === id) this.T.hostId = acik[0].id;
     this.nhieKontrol();
+    this.bilKontrol();
     this.yayinla();
   }
 
@@ -89,6 +90,8 @@ export class Oda {
       faz: 'lobi', oyun: null, hostId: null, oyuncular: [],
       sise: { tur: 0, aci: 0, hedefId: null, gorev: null, ceviren: null },
       nhie: { seviye: 'hepsi', cumle: null, cevaplar: {}, acik: false, kullanilan: [], tur: 0 },
+      bil: { soru: null, cevap: null, birim: '', not: '', tahminler: {},
+             acik: false, kullanilan: [], tur: 0, kazananlar: [] },
     };
   }
 
@@ -109,12 +112,17 @@ export class Oda {
       }
       case 'oyunSec': {
         if (!this.host(id)) return;
-        const oyun = ['sise', 'nhie'].includes(m.oyun) ? m.oyun : null;
+        const oyun = ['sise', 'nhie', 'bil'].includes(m.oyun) ? m.oyun : null;
         if (!oyun) return;
         T.oyun = oyun;
         T.faz = 'oyun';
         if (oyun === 'sise') T.sise = { tur: 0, aci: 0, hedefId: null, gorev: null, ceviren: null };
         if (oyun === 'nhie') { T.nhie = { seviye: T.nhie.seviye, cumle: null, cevaplar: {}, acik: false, kullanilan: [], tur: 0 }; this.nhieSonraki(); }
+        if (oyun === 'bil') {
+          T.bil = { soru: null, cevap: null, birim: '', not: '', tahminler: {}, acik: false, kullanilan: [], tur: 0, kazananlar: [] };
+          T.oyuncular.forEach(p2 => { p2.puan = 0; });
+          this.bilSonraki();
+        }
         this.yayinla(); break;
       }
       case 'lobi': {
@@ -164,6 +172,25 @@ export class Oda {
         if (T.oyun !== 'nhie' || !this.host(id)) return;
         this.nhieAc(); break;
       }
+      /* --- bil bakalım! --- */
+      case 'bilTahmin': {
+        if (T.oyun !== 'bil' || T.bil.acik || !T.bil.soru) return;
+        const sayi = Number(m.sayi);
+        if (!isFinite(sayi)) return;
+        T.bil.tahminler[id] = sayi;
+        this.yayinla();
+        this.bilKontrol(); break;
+      }
+      case 'bilAc': {
+        if (T.oyun !== 'bil' || !this.host(id)) return;
+        this.bilAc(); break;
+      }
+      case 'bilSonraki': {
+        if (T.oyun !== 'bil' || !this.host(id)) return;
+        this.bilSonraki();
+        this.yayinla(); break;
+      }
+
       case 'nhieSonraki': {
         if (T.oyun !== 'nhie' || !this.host(id)) return;
         this.nhieSonraki();
@@ -205,6 +232,48 @@ export class Oda {
     this.yayinla();
   }
 
+  /* ---------------- bil bakalım yardımcıları ---------------- */
+  bilSonraki() {
+    const T = this.T;
+    const { item } = Deck.pick(Deck.SORULAR, T.bil.kullanilan);
+    T.bil.soru = item.t;
+    T.bil.cevap = item.c;
+    T.bil.birim = item.b || '';
+    T.bil.not = item.not || '';
+    T.bil.tahminler = {};
+    T.bil.kazananlar = [];
+    T.bil.acik = false;
+    T.bil.tur++;
+  }
+
+  /** Bağlı herkes tahmin ettiyse kendiliğinden açılır. */
+  bilKontrol() {
+    const T = this.T;
+    if (!T || T.oyun !== 'bil' || T.bil.acik || !T.bil.soru) return;
+    const bekleyen = T.oyuncular.filter(p => p.bagli && T.bil.tahminler[p.id] === undefined);
+    if (bekleyen.length === 0) this.bilAc();
+  }
+
+  bilAc() {
+    const T = this.T;
+    if (T.bil.acik) return;
+    T.bil.acik = true;
+
+    const girenler = Object.entries(T.bil.tahminler);
+    if (girenler.length) {
+      let enYakin = Infinity;
+      girenler.forEach(([, v]) => { enYakin = Math.min(enYakin, Math.abs(v - T.bil.cevap)); });
+      T.bil.kazananlar = girenler
+        .filter(([, v]) => Math.abs(v - T.bil.cevap) === enYakin)
+        .map(([pid]) => pid);
+      T.bil.kazananlar.forEach(pid => {
+        const p = this.oyuncu(pid);
+        if (p) p.puan++;
+      });
+    }
+    this.yayinla();
+  }
+
   /* ---------------- gönderim ---------------- */
   gorunum() {
     const T = this.T;
@@ -219,6 +288,15 @@ export class Oda {
         // cevaplar yalnızca açıldığında paylaşılır
         cevaplar: T.nhie.acik ? T.nhie.cevaplar : {},
         cevaplayan: Object.keys(T.nhie.cevaplar),
+      },
+      bil: {
+        soru: T.bil.soru, birim: T.bil.birim, acik: T.bil.acik, tur: T.bil.tur,
+        // doğru cevap, açıklama ve tahminler yalnızca açıldığında paylaşılır
+        cevap: T.bil.acik ? T.bil.cevap : null,
+        not: T.bil.acik ? T.bil.not : '',
+        tahminler: T.bil.acik ? T.bil.tahminler : {},
+        kazananlar: T.bil.acik ? T.bil.kazananlar : [],
+        tahminEden: Object.keys(T.bil.tahminler),
       },
     };
   }

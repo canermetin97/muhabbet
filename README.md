@@ -12,7 +12,7 @@ Oda kodunu paylaş, katıl, oyna. Kurulum yok, derleme adımı yok, bağımlıl�
 | **Şişe Çevirmece** | hazır | Şişe herkesin telefonunda aynı anda aynı kişiye döner; seçilene bir görev düşer. |
 | **Ben Hiç…** | hazır | Cümle herkese gider, herkes gizlice cevaplar, son kişi de cevaplayınca hepsi birden açılır. 200 cümle, iki seviye. |
 | **Tabu** | yakında | Kelimeyi yalnızca anlatan görür; karşı takım yasaklıları görüp ihlali yakalar. |
-| **Bil Bakalım!** | yakında | Cevabı sayı olan bir soru; en yakın tahmini yapan kazanır. |
+| **Bil Bakalım!** | hazır | Cevabı sayı olan soru; herkes kendi telefonuna yazar, en yakın tahmin kazanır. 76 soru. |
 | **Apti** | yakında | Kuralları netleşince eklenecek. |
 
 ## Nasıl oynanır
@@ -29,7 +29,7 @@ Oda tamamen boşalınca sıfırlanır.
 |---|---|
 | `js/deck.js` | **Tek kaynak içerik:** cümleler, görevler. Sunucu da bunu kullanır. |
 | `js/room.js` | Oda bağlantısı: kimlik, WebSocket, yeniden bağlanma. Kural işletmez. |
-| `js/sise.js` · `js/nhie.js` | Oyun görünümleri. |
+| `js/sise.js` · `js/nhie.js` · `js/bil.js` | Oyun görünümleri. |
 | `js/app.js` | Ekran yönlendirme. |
 | `server/src/index.js` | Otoriter sunucu (Cloudflare Worker + Durable Object). |
 
@@ -65,3 +65,8 @@ yoksa tarayıcı eski dosyaları servis etmeye devam eder.
   sarhoş kararları ve odadaki insanlara dokunan sorular.
 
 **Şişe görevleri**: 50 adet, `GOREVLER` dizisinde.
+
+**Bil Bakalım! soruları**: 76 adet, `SORULAR` dizisinde. Her soru
+`{ t: soru, c: cevap, b: birim, not: açıklama }` biçiminde. Cevap açılınca
+`not` alanı da gösterilir — tahmin sorularında sayının nasıl bulunduğu yazıyor
+(“günde 1,5 kg × 365 × 80 yıl” gibi), böylece masa cevabı tartışabiliyor.

@@ -46,6 +46,7 @@ document.querySelectorAll('.oyun-karti[data-oyun]').forEach(b =>
 
 Sise.bagla();
 Nhie.bagla();
+Bil.bagla();
 
 /* ---------------- lobi çizimi ---------------- */
 function lobiCiz(d) {
@@ -79,6 +80,7 @@ Oda.dinle((tip, veri) => {
   if (d.faz === 'lobi') { lobiCiz(d); goster('lobi'); return; }
   if (d.oyun === 'sise') { Sise.ciz(d); goster('sise'); return; }
   if (d.oyun === 'nhie') { Nhie.ciz(d); goster('nhie'); return; }
+  if (d.oyun === 'bil') { Bil.ciz(d); goster('bil'); return; }
   lobiCiz(d); goster('lobi');
 });
 

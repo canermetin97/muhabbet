@@ -7,7 +7,7 @@ const ONBELLEK = 'muhabbet-' + SURUM;
 const DOSYALAR = [
   './', './index.html', './manifest.webmanifest',
   './css/style.css?v=2',
-  './js/room.js?v=2', './js/sise.js?v=2', './js/nhie.js?v=2', './js/app.js?v=2',
+  './js/room.js?v=2', './js/sise.js?v=2', './js/nhie.js?v=2', './js/bil.js?v=2', './js/app.js?v=2',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
 ];
 

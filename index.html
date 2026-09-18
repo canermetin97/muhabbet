@@ -74,9 +74,10 @@
           <span class="ok-ikon">🤫</span>
           <b>Tabu</b><small>yakında</small>
         </button>
-        <button class="oyun-karti yakinda" disabled>
+        <button class="oyun-karti" data-oyun="bil">
           <span class="ok-ikon">🔢</span>
-          <b>Bil Bakalım!</b><small>yakında</small>
+          <b>Bil Bakalım!</b>
+          <small>Cevabı sayı olan soru — en yakın tahmin kazanır</small>
         </button>
       </div>
     </div>
@@ -146,11 +147,44 @@
   </footer>
 </section>
 
+<!-- ==================== BİL BAKALIM! ==================== -->
+<section id="ekran-bil" class="ekran">
+  <header class="ustbar">
+    <button class="dugme hayalet kucuk" data-lobi>‹ Lobi</button>
+    <span class="kod-rozet" id="bil-kod">—</span>
+    <span class="tur-rozet" id="bil-tur"></span>
+  </header>
+
+  <div class="govde orta">
+    <div class="cumle-kart soru-kart" id="bil-soru">…</div>
+
+    <div class="cevap-alani" id="bil-cevap-alani">
+      <input id="bil-tahmin" type="text" inputmode="decimal" placeholder="Tahminin"
+             autocomplete="off" enterkeyhint="send">
+      <span class="birim" id="bil-birim"></span>
+    </div>
+
+    <div class="dogru-cevap gizli" id="bil-dogru">
+      <div class="sayi" id="bil-dogru-sayi">—</div>
+      <div class="aciklama" id="bil-not"></div>
+    </div>
+
+    <div class="tahmin-listesi" id="bil-liste"></div>
+  </div>
+
+  <footer class="altbar">
+    <button class="dugme birincil buyuk" id="bil-gonder">Gönder</button>
+    <button class="dugme birincil buyuk gizli" id="bil-sonraki">Sıradaki soru</button>
+    <button class="dugme hayalet kucuk gizli" id="bil-ac">Beklemeden aç</button>
+  </footer>
+</section>
+
 </div>
 
 <script src="js/room.js?v=2"></script>
 <script src="js/sise.js?v=2"></script>
 <script src="js/nhie.js?v=2"></script>
+<script src="js/bil.js?v=2"></script>
 <script src="js/app.js?v=2"></script>
 </body>
 </html>

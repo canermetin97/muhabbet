@@ -273,6 +273,105 @@ export const GOREVLER = [
   'Bir dakika boyunca herkese “sen” yerine adıyla hitap et.',
 ];
 
+/* ---------- Bil Bakalım! — cevabı sayı olan sorular ----------
+   c: doğru cevap · b: birim · not: cevap açılınca gösterilen açıklama.
+   Tahmin soruları hesabıyla birlikte veriliyor; uydurma sayı yok.        */
+export const SORULAR = [
+/* --- dünya, coğrafya --- */
+{ t:'Everest Tepesi kaç metre?', c:8849, b:'m', not:'2020’de Nepal ve Çin’in ortak ölçümüyle güncellendi.' },
+{ t:'Dünyanın ekvator çevresi kaç kilometre?', c:40075, b:'km', not:'Kutuplardan geçen çevre biraz daha kısa: 40.008 km.' },
+{ t:'Okyanusun en derin noktası (Mariana Çukuru) kaç metre?', c:10994, b:'m', not:'Challenger Derinliği; ölçümlere göre 10.900–11.000 m arası veriliyor.' },
+{ t:'Nil Nehri kaç kilometre?', c:6650, b:'km', not:'Amazon ile “en uzun nehir” yarışı ölçüm yöntemine göre değişiyor.' },
+{ t:'Rusya’nın yüzölçümü kaç kilometrekare?', c:17098242, b:'km²', not:'Dünya kara yüzeyinin yaklaşık sekizde biri.' },
+{ t:'Türkiye’nin yüzölçümü kaç kilometrekare?', c:783562, b:'km²', not:'Göller dahil toplam alan.' },
+{ t:'Vatikan’ın yüzölçümü kaç kilometrekare?', c:0.44, b:'km²', not:'Dünyanın en küçük ülkesi; Taksim Meydanı ve çevresi kadar.' },
+{ t:'Dünyada kaç ülke var (BM üyesi)?', c:193, b:'ülke', not:'Birleşmiş Milletler üye sayısı. Gözlemci statüsündekiler hariç.' },
+{ t:'Türkiye’de kaç il var?', c:81, b:'il', not:'Son eklenen il 1999’da Düzce.' },
+{ t:'Çin Seddi kaç kilometre?', c:21196, b:'km', not:'2012 resmî ölçümü; bütün kollar ve dallar dahil.' },
+
+/* --- uzay --- */
+{ t:'Ay ile Dünya arası ortalama kaç kilometre?', c:384400, b:'km', not:'Yörünge eliptik olduğu için 363.300 ile 405.500 km arasında değişir.' },
+{ t:'Güneş ile Dünya arası kaç milyon kilometre?', c:150, b:'milyon km', not:'Bu uzaklığa “astronomik birim” deniyor.' },
+{ t:'Işık saniyede kaç kilometre yol alır?', c:299792, b:'km/sn', not:'Boşlukta; tam değer 299.792,458 km/sn.' },
+{ t:'Güneş ışığı Dünya’ya kaç dakikada ulaşır?', c:8, b:'dakika', not:'Yaklaşık 8 dakika 20 saniye.' },
+{ t:'Uluslararası Uzay İstasyonu Dünya’yı günde kaç kez turlar?', c:16, b:'tur', not:'Yaklaşık 90 dakikada bir tur atıyor.' },
+{ t:'Güneş Sistemi’nde kaç gezegen var?', c:8, b:'gezegen', not:'Plüton 2006’da cüce gezegen sınıfına alındı.' },
+{ t:'Mars’ta bir gün kaç saat sürer?', c:24.6, b:'saat', not:'Dünya gününden yaklaşık 40 dakika uzun.' },
+{ t:'Ay’da yerçekimi Dünya’nın kaçta biri?', c:6, b:'’da biri', not:'Dünya’da 60 kg olan biri Ay’da 10 kg gelir.' },
+
+/* --- insan vücudu --- */
+{ t:'Yetişkin bir insanda kaç kemik var?', c:206, b:'kemik', not:'Bebeklerde yaklaşık 300; büyürken bir kısmı kaynaşıyor.' },
+{ t:'Kalp günde ortalama kaç kez atar?', c:100000, b:'atış', not:'Dakikada ~70 atış × 60 × 24 ≈ 100.800.' },
+{ t:'Bir insanın vücudunda kaç litre kan var?', c:5, b:'litre', not:'Yetişkin ortalaması; vücut ağırlığının ~%7’si.' },
+{ t:'İnsan beyni kaç gram?', c:1400, b:'gram', not:'Yetişkin ortalaması; vücut ağırlığının %2’si ama enerjinin %20’sini kullanır.' },
+{ t:'Kafada ortalama kaç saç teli var?', c:100000, b:'tel', not:'Saç rengine göre değişir; sarışınlarda daha fazla, kızıllarda daha az.' },
+{ t:'İnsan dakikada ortalama kaç kez göz kırpar?', c:17, b:'kez', not:'Dakikada 15–20 arası; ekrana bakarken belirgin şekilde azalıyor.' },
+{ t:'Yetişkin bir insanın vücudunun yüzde kaçı su?', c:60, b:'%', not:'Yaşa ve vücut yapısına göre %55–65 arası.' },
+{ t:'İnsan vücudunda kaç kas var?', c:600, b:'kas', not:'Sayım yöntemine göre 600–650 arasında veriliyor.' },
+{ t:'Dil üzerinde kaç tat tomurcuğu var?', c:10000, b:'tomurcuk', not:'Yaşla birlikte azalıyor.' },
+
+/* --- hayvanlar --- */
+{ t:'Zürafanın boynunda kaç omur var?', c:7, b:'omur', not:'İnsanla aynı sayıda — sadece her biri çok uzun.' },
+{ t:'Ahtapotun kaç kalbi var?', c:3, b:'kalp', not:'İkisi solungaçlara, biri vücuda kan pompalar.' },
+{ t:'Bir fil kaç ay hamile kalır?', c:22, b:'ay', not:'Kara hayvanları arasındaki en uzun gebelik.' },
+{ t:'Bir karınca kendi ağırlığının kaç katını taşıyabilir?', c:50, b:'kat', not:'Türe göre 10–50 kat arası veriliyor.' },
+{ t:'Bir arı kovanında yazın kaç arı bulunur?', c:50000, b:'arı', not:'Mevsime göre 20.000 ile 80.000 arasında değişiyor.' },
+{ t:'Sinek saniyede kaç kez kanat çırpar?', c:200, b:'kez', not:'Bu yüzden vızıltısı duyulabilir bir sese dönüşüyor.' },
+{ t:'Mavi balina kaç metre uzunlukta olabilir?', c:30, b:'m', not:'Yaşamış en büyük hayvan; 150 tona kadar çıkabiliyor.' },
+{ t:'Bir çita en fazla saatte kaç kilometre hızlanır?', c:110, b:'km/s', not:'Bu hızı yalnızca birkaç yüz metre koruyabiliyor.' },
+
+/* --- spor, ölçüler --- */
+{ t:'Maraton kaç kilometre?', c:42.195, b:'km', not:'1908 Londra Olimpiyatları’nda kraliyet locasına göre ayarlandı.' },
+{ t:'Olimpik yüzme havuzu kaç metre?', c:50, b:'m', not:'Genişliği 25 m, on kulvar.' },
+{ t:'Basketbol potası yerden kaç santimetre yükseklikte?', c:305, b:'cm', not:'Tam 10 ayak.' },
+{ t:'Satranç tahtasında kaç kare var?', c:64, b:'kare', not:'8×8; her oyuncu 16 taşla başlar.' },
+{ t:'Piyanoda kaç tuş var?', c:88, b:'tuş', not:'52 beyaz, 36 siyah.' },
+{ t:'Bir futbol maçı kaç dakika (uzatmalar hariç)?', c:90, b:'dakika', not:'İki devre 45’er dakika.' },
+{ t:'Tavla pulu sayısı toplam kaç?', c:30, b:'pul', not:'Her oyuncuda 15 pul.' },
+
+/* --- zaman, sayılar --- */
+{ t:'Bir yılda kaç saniye var?', c:31536000, b:'saniye', not:'365 × 24 × 60 × 60.' },
+{ t:'Bir milyon saniye kaç gündür?', c:11.6, b:'gün', not:'Bir milyar saniye ise yaklaşık 31,7 yıl.' },
+{ t:'İnsan DNA’sında kaç kromozom var?', c:46, b:'kromozom', not:'23 çift.' },
+{ t:'Rubik küpünün kaç farklı dizilişi var (kentilyon)?', c:43, b:'kentilyon', not:'43.252.003.274.489.856.000 — yani 43 kentilyon.' },
+
+/* --- tarih --- */
+{ t:'Türkiye Cumhuriyeti hangi yıl kuruldu?', c:1923, b:'', not:'29 Ekim 1923.' },
+{ t:'İstanbul hangi yıl fethedildi?', c:1453, b:'', not:'29 Mayıs 1453.' },
+{ t:'İnsan Ay’a ilk kez hangi yıl ayak bastı?', c:1969, b:'', not:'20 Temmuz 1969, Apollo 11.' },
+{ t:'Titanic hangi yıl battı?', c:1912, b:'', not:'15 Nisan 1912, ilk seferinde.' },
+{ t:'Berlin Duvarı hangi yıl yıkıldı?', c:1989, b:'', not:'9 Kasım 1989.' },
+{ t:'İlk iPhone hangi yıl tanıtıldı?', c:2007, b:'', not:'9 Ocak 2007’de tanıtıldı, Haziran’da satışa çıktı.' },
+{ t:'İkinci Dünya Savaşı kaç yıl sürdü?', c:6, b:'yıl', not:'1939–1945.' },
+
+/* --- yapılar --- */
+{ t:'Eiffel Kulesi kaç metre?', c:330, b:'m', not:'Antenlerle birlikte; yapıldığında 300 m idi.' },
+{ t:'Burj Khalifa kaç metre?', c:828, b:'m', not:'Dünyanın en yüksek binası, 163 kat.' },
+{ t:'Galata Kulesi kaç metre?', c:67, b:'m', not:'Bulunduğu tepeyle birlikte deniz seviyesinden ~140 m.' },
+{ t:'Mısır’daki Büyük Piramit kaç metre (bugünkü hâli)?', c:139, b:'m', not:'Yapıldığında 146 m idi; dış kaplaması aşınmış.' },
+{ t:'Özgürlük Anıtı kaidesiyle birlikte kaç metre?', c:93, b:'m', not:'Yalnızca heykel 46 m.' },
+
+/* --- gündelik hayat, tahmin soruları --- */
+{ t:'Bir insan ömrü boyunca yaklaşık kaç kilo yemek yer?', c:44000, b:'kg', not:'Günde ~1,5 kg × 365 × 80 yıl ≈ 44 ton.' },
+{ t:'Bir insan ömrü boyunca yaklaşık kaç yıl uyur?', c:26, b:'yıl', not:'Günde 8 saat × 80 yıl = ömrün üçte biri.' },
+{ t:'Bir insanın kalbi ömrü boyunca yaklaşık kaç kez atar (milyar)?', c:2.9, b:'milyar', not:'Dakikada 70 × 60 × 24 × 365 × 80 ≈ 2,9 milyar.' },
+{ t:'Bir insan ömrü boyunca yaklaşık kaç litre su içer?', c:58000, b:'litre', not:'Günde 2 litre × 365 × 80 yıl.' },
+{ t:'Saç ayda ortalama kaç santimetre uzar?', c:1.25, b:'cm', not:'Yılda ~15 cm; 80 yılda 12 metreye yakın saç üretiliyor.' },
+{ t:'Bir insan günde ortalama kaç kelime konuşur?', c:16000, b:'kelime', not:'Araştırmalarda kadın ve erkek ortalamaları birbirine yakın çıkıyor.' },
+{ t:'Bir insan günde ortalama kaç kez telefonuna bakar?', c:58, b:'kez', not:'Ekran zamanı araştırmalarında 50–80 arası ölçülüyor.' },
+{ t:'Bir A4 kâğıdı kaç kez ikiye katlanabilir (gerçekte)?', c:7, b:'kez', not:'Her katlamada kalınlık iki katına çıkıyor; 7’den sonrası elle mümkün değil.' },
+{ t:'Bir fincan filtre kahvede kaç miligram kafein var?', c:95, b:'mg', not:'Demleme yöntemine göre 70–140 mg arası.' },
+{ t:'Bir muzun içinde kaç kalori var?', c:105, b:'kalori', not:'Orta boy, ~118 gram.' },
+{ t:'Bir insan nefes almadan ortalama kaç saniye durabilir?', c:60, b:'saniye', not:'Antrenmansız ortalama; rekorlar 20 dakikanın üzerinde.' },
+{ t:'Dünyada her saniye yaklaşık kaç bebek doğuyor?', c:4, b:'bebek', not:'Yılda ~130 milyon doğum.' },
+{ t:'Dünya nüfusu kaç milyar?', c:8, b:'milyar', not:'2022 sonunda 8 milyarı geçti.' },
+{ t:'İstanbul’un nüfusu kaç milyon?', c:15.7, b:'milyon', not:'TÜİK 2023 verisi; Türkiye nüfusunun beşte birinden fazlası.' },
+{ t:'Türkiye’nin nüfusu kaç milyon?', c:85, b:'milyon', not:'2023 TÜİK verisine göre 85,3 milyon.' },
+{ t:'Bir insan ömrü boyunca yaklaşık kaç adım atar (milyon)?', c:200, b:'milyon', not:'Günde ~7.000 adım × 365 × 80 yıl.' },
+{ t:'Bir yılda ortalama kaç kez hapşırırız?', c:400, b:'kez', not:'Günde ~1 kez; alerjisi olanlarda çok daha fazla.' },
+{ t:'Bir kilo bal için arılar yaklaşık kaç milyon çiçeği ziyaret eder?', c:4, b:'milyon', not:'Bir arı ömrü boyunca ancak bir çay kaşığı bal üretebiliyor.' },
+];
+
 export const NHIE_SEVIYE = { klasik: 'Klasik', aci: 'Acı biber', hepsi: 'Karışık' };
 
 /** Kullanılmışları atlayarak rastgele bir öğe seçer. → {i, item} */
